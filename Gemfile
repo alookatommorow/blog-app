@@ -4,6 +4,7 @@ gem 'rails', '4.2.5.1'
 
 gem 'bcrypt'
 gem 'jquery-rails'
+gem 'nokogiri'
 gem 'pg'
 gem 'sass-rails'
 gem 'turbolinks'

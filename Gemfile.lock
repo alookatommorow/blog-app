@@ -223,6 +223,7 @@ DEPENDENCIES
   forgery (= 0.6.0)
   jquery-rails
   launchy
+  nokogiri
   pg
   pry-byebug
   pry-rails
