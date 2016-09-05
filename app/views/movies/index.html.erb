@@ -1,0 +1,14 @@
+<h1>Hella movies</h1>
+
+<% @movies.each do |movie| %>
+  <div>
+    <%= link_to movie_path(movie) do  %>
+      <h2><%= movie.title %></h2>
+    <% end %>
+  </div>
+  <ul>
+    <li>Director: <%= movie.director %></li>
+
+    <li>Year: <%= movie.year %></li>
+  </ul>
+<% end %>
