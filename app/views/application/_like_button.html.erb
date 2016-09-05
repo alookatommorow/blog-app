@@ -1,11 +1,12 @@
 <% if logged_in? %>
   <% if like.present? %>
-    <%= form_for like, method: :delete do |f| %>
-      <%= f.hidden_field :id, value: like.id %>
+    <%= form_for like, method: :delete, html: {class: "like-form"} do |f| %>
+      <%= f.hidden_field :likeable_id, value: movie.id %>
+      <%= f.hidden_field :likeable_type, value: movie.class.name %>
       <%= f.submit "Unlike" %>
     <% end %>
   <% else %>
-    <%= form_for :like, url: likes_path do |f| %>
+    <%= form_for :like, url: likes_path, html: {class: "like-form"} do |f| %>
       <%= f.hidden_field :likeable_id, value: movie.id %>
       <%= f.hidden_field :likeable_type, value: movie.class.name %>
       <%= f.hidden_field :user_id, value: current_user.id %>
