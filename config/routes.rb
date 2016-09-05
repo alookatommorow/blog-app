@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :movies
-  resources :books
-  resources :users
+  resources :movies, only: [:index, :show]
+  resources :books, only: [:index, :show]
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:create, :destroy, :new]
 
   get 'welcome/index'
 
