@@ -27,11 +27,11 @@ class SessionsController < ApplicationController
     end
 
     def user_authenticated?
-      @user ||= User.where(username: session_params[:username]).first
+      @user ||= User.where(email: session_params[:email]).first
       @user && @user.authenticate(session_params[:password])
     end
 
     def session_params
-      params.require(:session).permit(:username, :password)
+      params.require(:session).permit(:email, :password)
     end
 end
