@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160904184342) do
   end
 
   add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
-  add_index "likes", ["user_id", "likeable_id"], name: "index_likes_on_user_id_and_likeable_id", unique: true, using: :btree
+  add_index "likes", ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
