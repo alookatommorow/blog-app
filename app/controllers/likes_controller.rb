@@ -12,6 +12,10 @@ class LikesController <ApplicationController
 
   private
 
+  def likeable_class
+    like_params[:likeable_type].constantize
+  end
+
   def like_params
     params.require(:like).permit(:likeable_id, :likeable_type, :user_id)
   end
@@ -21,7 +25,7 @@ class LikesController <ApplicationController
       button: render_to_string('_like_button.html.erb',
         layout: false,
         locals: {
-          movie: Movie.find(like_params[:likeable_id]),
+          likeable: likeable_class.find(like_params[:likeable_id]),
           like: @like
         }
       ),
