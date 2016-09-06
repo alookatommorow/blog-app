@@ -11,7 +11,6 @@ $(document).ready(function() {
     .fail(function() {
       console.log("bitch ass");
     });
-
   });
 
   function renderLikes(response) {

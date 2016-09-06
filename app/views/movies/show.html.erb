@@ -1,6 +1,11 @@
 <h1> <%= @movie.title %></h1>
-<div class="likes-container">
-  <%= render partial: "likes", locals: { likes: @likes } %>
+
+<div class="reviews-container">
+  <%= render partial: "reviews", locals: {  movie: @movie, reviews: @movie.reviews } %>
+</div>
+
+<div class="likes-container" >
+  <%= render partial: "likes", locals: { likes: @movie.likes.size } %>
 </div>
 
 <div class="like-form-container" data-button-container=true>

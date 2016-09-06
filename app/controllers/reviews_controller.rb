@@ -1,26 +1,18 @@
 class ReviewsController <ApplicationController
+
   def create
-    @review = Review.new(review_params)
-    if @review.save
-
-    else
-
-    end
-    render_likes
-  end
-
-  def destroy
-    Review.destroy(params[:id])
-    render_likes
+    @review = Review.create(review_params)
+    @movie = Movie.includes(:reviews).find(review_params[:movie_id])
+    render_reviews
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:movie_id, :user_id)
+    params.require(:review).permit(:movie_id, :user_id, :review)
   end
 
   def render_reviews
-    render partial: "reviews", locals: { reviews: Review.all, num_reviews: Review.where(movie_id: review_params[:movie_id], user_id: review_params[:user_id]) }
+    render partial: "reviews", locals: { reviews: @movie.reviews, movie: @movie }
   end
 end
