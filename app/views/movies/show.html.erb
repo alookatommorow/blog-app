@@ -1,6 +1,12 @@
 <h1> <%= @movie.title %></h1>
+<div class="movie-info">
+  <div><%= @movie.director %></div>
+  <div><%= @movie.year %></div>
+  <div><%= @movie.country %></div>
+  <div><%= @movie.runtime %></div>
+</div>
 
-<div class="reviews-container">
+<div data-ajax-replace="reviews-container">
   <%= render partial: "reviews", locals: {  movie: @movie, reviews: @movie.reviews } %>
 </div>
 

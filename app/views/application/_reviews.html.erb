@@ -1,14 +1,12 @@
-<div>
-  Reviews: <%= reviews.size %>
-</div>
+<div>Reviews: <%= reviews.size %></div>
 <% reviews.each do |review| %>
-  <div>
-    <%= review.review %>
-  </div>
+  <div><%= review.review %></div>
 <% end  %>
-<%= form_for :review, url: reviews_path, html: { class: "review-form" }, data: {replace_container: ".reviews-container"} do |f| %>
-  <%= f.text_area :review, placeholder: "Write review here..." %>
-  <%= f.hidden_field :movie_id, value: movie.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Submit Review"  %>
+<% if logged_in? %>
+  <%= form_for :review, url: reviews_path, data: {ajax_submit: "reviews-container"} do |f| %>
+    <%= f.text_area :review, placeholder: "Write review here..." %>
+    <%= f.hidden_field :movie_id, value: movie.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Submit Review"  %>
+  <% end %>
 <% end %>

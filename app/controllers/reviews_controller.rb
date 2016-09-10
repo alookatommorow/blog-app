@@ -1,7 +1,7 @@
 class ReviewsController <ApplicationController
 
   def create
-    @review = Review.create(review_params)
+    Review.create(review_params)
     @movie = Movie.includes(:reviews).find(review_params[:movie_id])
     render_reviews
   end

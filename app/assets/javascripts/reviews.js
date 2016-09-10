@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".reviews-container").on("submit", ".review-form", function(event) {
+  $("[data-ajax-replace]").on("submit", "[data-ajax-submit]", function(event) {
     event.preventDefault();
     var url = this.action;
     var data = $(this).serialize();
@@ -9,7 +9,7 @@ $(document).ready(function() {
   });
 
   function renderResponse(response) {
-    var $container = $(this).data("replace-container");
-    $($container).html(response);
+    var container = $(this).data("ajax-submit");
+    $("[data-ajax-replace="+container+"]").html(response);
   }
 });
