@@ -24,4 +24,6 @@ Like.create(user_id: 1, likeable_id: 3, likeable_type: "Book")
 Like.create(user_id: 2, likeable_id: 2, likeable_type: "Book")
 Like.create(user_id: 1, likeable_id: 2, likeable_type: "Book")
 
+Review.create(review: "This movie iz chill", user_id: 1, movie_id: 1)
+Review.create(review: "This movie boez", user_id: 2, movie_id: 1)
 

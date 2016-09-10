@@ -4,8 +4,7 @@ class MoviesController <ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
-    @likes = Like.where(likeable_id: params[:id]).count
+    @movie = Movie.includes(:reviews).find(params[:id])
     @like = get_user_like
   end
 
@@ -13,7 +12,7 @@ class MoviesController <ApplicationController
 
   def get_user_like
     if logged_in?
-      Like.where(user_id: current_user.id, likeable_id: params[:id], likeable_type: "Movie").take
+      @movie.likes.where(user_id: current_user.id).take
     end
   end
 end

@@ -10,7 +10,7 @@ $(document).ready(function() {
     .done(renderLikes.bind(this) )
     .fail(function() {
       console.log("bitch ass");
-    })
+    });
   });
 
   function renderLikes(response) {
